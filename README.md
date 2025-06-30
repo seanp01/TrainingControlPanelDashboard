@@ -1,14 +1,15 @@
+
 # Training Control Panel Dashboard
 
-A cross-platform .NET MAUI application for managing training programs, athletes, and analytics for fitness and sports training.
+A cross-platform .NET MAUI application for managing machine learning model training, orchestration, and analytics for LMs and other ML models.
 
 ## Features
 
-- **Athletes Management** - Track and manage athlete profiles and information
-- **Training Programs** - Create and manage customized training programs
-- **Training Sessions** - Schedule and monitor training sessions
-- **Analytics** - View performance metrics and training analytics
-- **Settings** - Configure application preferences
+- **Model Management** - Track and manage ML model profiles, types, datasets, and training status
+- **Training Programs** - Create and manage ML training pipelines and program metadata
+- **Training Sessions** - Schedule, monitor, and analyze model training runs
+- **Analytics** - View model performance metrics, training KPIs, and trends
+- **Settings** - Configure application and integration preferences
 
 ## Screenshots
 
@@ -59,10 +60,10 @@ A cross-platform .NET MAUI application for managing training programs, athletes,
 
 ```
 TrainingControlPanelDashboard/
-├── Models/              # Data models (Athlete, Exercise, TrainingProgram, etc.)
-├── Pages/               # XAML pages for different views
+├── Models/              # Data models (Model, TrainingSession, TrainingProgram, Exercise, etc.)
+├── Pages/               # XAML pages for different dashboard and management views
 ├── ViewModels/          # MVVM view models
-├── Services/            # Business logic and data services
+├── Services/            # Business logic and data services (DVC, Langraph, etc.)
 ├── Resources/           # Images, fonts, styles, and other resources
 ├── Platforms/           # Platform-specific code
 └── Properties/          # Launch settings and configuration
@@ -72,10 +73,10 @@ TrainingControlPanelDashboard/
 
 This application follows the MVVM (Model-View-ViewModel) architectural pattern:
 
-- **Models**: Data structures representing athletes, exercises, training programs, and sessions
-- **Views**: XAML pages for user interface
+- **Models**: Data structures representing ML models, training sessions, training programs, and RL exercises
+- **Views**: XAML pages for user interface (dashboard, models, sessions, analytics, etc.)
 - **ViewModels**: Business logic and data binding between models and views
-- **Services**: Data access and business services
+- **Services**: Data access, orchestration, and integration with ML tools (DVC, Langraph, etc.)
 
 ## Contributing
 

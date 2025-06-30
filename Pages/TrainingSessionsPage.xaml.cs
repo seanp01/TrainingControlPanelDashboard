@@ -33,9 +33,9 @@ namespace TrainingControlPanelDashboard.Pages
                 LoadingIndicator.IsRunning = true;
 
                 var sessions = await _dataService.GetTrainingSessionsAsync();
-                
+
                 _sessions.Clear();
-                foreach (var session in sessions.OrderBy(s => s.ScheduledDateTime))
+                foreach (var session in sessions.OrderBy(s => s.Scheduled))
                 {
                     _sessions.Add(new TrainingSessionViewModel(session, _dataService));
                 }
@@ -60,10 +60,10 @@ namespace TrainingControlPanelDashboard.Pages
             // Apply search filter
             if (!string.IsNullOrWhiteSpace(_searchText))
             {
-                filtered = filtered.Where(s => 
+                filtered = filtered.Where(s =>
                     s.Name.Contains(_searchText, StringComparison.OrdinalIgnoreCase) ||
-                    s.Type.Contains(_searchText, StringComparison.OrdinalIgnoreCase) ||
-                    s.Location.Contains(_searchText, StringComparison.OrdinalIgnoreCase));
+                    s.ModelType.Contains(_searchText, StringComparison.OrdinalIgnoreCase) ||
+                    s.Dataset.Contains(_searchText, StringComparison.OrdinalIgnoreCase));
             }
 
             // Apply status filter
@@ -110,18 +110,15 @@ namespace TrainingControlPanelDashboard.Pages
         public TrainingSessionViewModel(TrainingSession session, IDataService dataService)
         {
             _dataService = dataService;
-            
             // Copy properties from the source session
             Id = session.Id;
             Name = session.Name;
-            ScheduledDateTime = session.ScheduledDateTime;
+            Scheduled = session.Scheduled;
             Duration = session.Duration;
-            Type = session.Type;
+            ModelType = session.ModelType;
+            Dataset = session.Dataset;
             Description = session.Description;
             Status = session.Status;
-            Location = session.Location;
-            AthleteId = session.AthleteId;
-            ProgramId = session.ProgramId;
         }
 
         public string StatusColor
@@ -149,8 +146,8 @@ namespace TrainingControlPanelDashboard.Pages
             if (session != null)
             {
                 bool confirm = await Application.Current?.MainPage?.DisplayAlert(
-                    "Confirm Delete", 
-                    $"Are you sure you want to delete '{session.Name}'?", 
+                    "Confirm Delete",
+                    $"Are you sure you want to delete '{session.Name}'?",
                     "Yes", "No");
 
                 if (confirm)

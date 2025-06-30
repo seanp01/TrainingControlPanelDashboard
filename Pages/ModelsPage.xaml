@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TrainingControlPanelDashboard.Pages.AthletesPage"
-             Title="Athletes">
+             x:Class="TrainingControlPanelDashboard.Pages.ModelsPage"
+             Title="Models">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -18,20 +18,18 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                
                 <Label Grid.Column="0"
-                       Text="Athletes"
+                       Text="ML Models"
                        FontSize="20"
                        FontAttributes="Bold"
                        TextColor="White"
                        VerticalOptions="Center" />
-                
                 <Button Grid.Column="1"
-                        x:Name="AddAthleteButton"
-                        Text="+ Add Athlete"
+                        x:Name="AddModelButton"
+                        Text="+ Add Model"
                         BackgroundColor="White"
                         TextColor="{StaticResource Primary}"
-                        Clicked="OnAddAthleteClicked" />
+                        Clicked="OnAddModelClicked" />
             </Grid>
         </Frame>
 
@@ -41,31 +39,27 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            
             <SearchBar Grid.Column="0"
                        x:Name="SearchBar"
-                       Placeholder="Search athletes..."
+                       Placeholder="Search models..."
                        TextChanged="OnSearchTextChanged" />
-            
             <Picker Grid.Column="1"
-                    x:Name="SportFilterPicker"
-                    Title="Filter by Sport"
+                    x:Name="TypeFilterPicker"
+                    Title="Filter by Type"
                     WidthRequest="150"
-                    SelectedIndexChanged="OnSportFilterChanged">
+                    SelectedIndexChanged="OnTypeFilterChanged">
                 <Picker.Items>
-                    <x:String>All Sports</x:String>
-                    <x:String>Football</x:String>
-                    <x:String>Basketball</x:String>
-                    <x:String>Soccer</x:String>
-                    <x:String>Tennis</x:String>
-                    <x:String>Swimming</x:String>
-                    <x:String>Track</x:String>
+                    <x:String>All Types</x:String>
+                    <x:String>Language Model</x:String>
+                    <x:String>Vision Model</x:String>
+                    <x:String>Classification</x:String>
+                    <x:String>Regression</x:String>
                 </Picker.Items>
             </Picker>
         </Grid>
 
-        <!-- Athletes List -->
-        <CollectionView Grid.Row="2" x:Name="AthletesCollectionView" Margin="20">
+        <!-- Models List -->
+        <CollectionView Grid.Row="2" x:Name="ModelsCollectionView" Margin="20">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <SwipeView>
@@ -77,9 +71,11 @@
                                 <SwipeItem Text="Delete"
                                            BackgroundColor="Red"
                                            Command="{Binding DeleteCommand}" />
+                                <SwipeItem Text="Start Training"
+                                           BackgroundColor="Green"
+                                           Command="{Binding StartTrainingCommand}" />
                             </SwipeItems>
                         </SwipeView.RightItems>
-                        
                         <Frame Padding="15" Margin="0,5" BackgroundColor="White">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -87,8 +83,7 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-
-                                <!-- Avatar -->
+                                <!-- Model Icon Placeholder -->
                                 <Frame Grid.Column="0" 
                                        BackgroundColor="{StaticResource Primary}"
                                        HeightRequest="50"
@@ -96,39 +91,24 @@
                                        CornerRadius="25"
                                        Padding="0"
                                        VerticalOptions="Center">
-                                    <Label Text="{Binding Initials}"
-                                           FontSize="18"
-                                           FontAttributes="Bold"
-                                           TextColor="White"
-                                           HorizontalOptions="Center"
-                                           VerticalOptions="Center" />
+                                    <Label Text="{Binding TypeShort}" FontSize="18" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" />
                                 </Frame>
-
-                                <!-- Athlete Info -->
+                                <!-- Model Info -->
                                 <StackLayout Grid.Column="1" Padding="15,0" VerticalOptions="Center">
-                                    <Label Text="{Binding Name}"
-                                           FontSize="16"
-                                           FontAttributes="Bold" />
+                                    <Label Text="{Binding Name}" FontSize="16" FontAttributes="Bold" />
                                     <StackLayout Orientation="Horizontal" Spacing="10">
-                                        <Label Text="{Binding Sport}" FontSize="12" TextColor="Gray" />
-                                        <Label Text="{Binding Position}" FontSize="12" TextColor="Gray" />
+                                        <Label Text="{Binding Type}" FontSize="12" TextColor="Gray" />
+                                        <Label Text="{Binding Dataset}" FontSize="12" TextColor="Gray" />
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal" Spacing="10">
-                                        <Label Text="{Binding Age, StringFormat='Age: {0}'}" FontSize="12" TextColor="DarkGray" />
                                         <Label Text="{Binding Status}" FontSize="12" TextColor="{StaticResource Primary}" />
+                                        <Label Text="{Binding LastRun, StringFormat='Last: {0:MM/dd}'}" FontSize="12" TextColor="DarkGray" />
                                     </StackLayout>
                                 </StackLayout>
-
-                                <!-- Stats -->
+                                <!-- Metrics -->
                                 <StackLayout Grid.Column="2" VerticalOptions="Center" HorizontalOptions="End">
-                                    <Label Text="{Binding Height, StringFormat='{0:F0} cm'}"
-                                           FontSize="12"
-                                           TextColor="Gray"
-                                           HorizontalOptions="End" />
-                                    <Label Text="{Binding Weight, StringFormat='{0:F0} kg'}"
-                                           FontSize="12"
-                                           TextColor="Gray"
-                                           HorizontalOptions="End" />
+                                    <Label Text="{Binding Accuracy, StringFormat='Acc: {0:P1}'}" FontSize="12" TextColor="Gray" HorizontalOptions="End" />
+                                    <Label Text="{Binding Loss, StringFormat='Loss: {0:F2}'}" FontSize="12" TextColor="Gray" HorizontalOptions="End" />
                                 </StackLayout>
                             </Grid>
                         </Frame>

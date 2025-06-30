@@ -1,18 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\Dev\\TrainingControlPanel\\app\\TrainingControlPanelDashboard\\",
+  "WorkspaceRootPath": "E:\\Dev\\TrainingControlPanelDashboard\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DBC7688B-63B0-4E31-BCEF-41237F4D94CB}|TrainingControlPanelDashboard.csproj|e:\\dev\\trainingcontrolpanel\\app\\trainingcontrolpaneldashboard\\pages\\settingspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{DBC7688B-63B0-4E31-BCEF-41237F4D94CB}|TrainingControlPanelDashboard.csproj|e:\\dev\\trainingcontrolpaneldashboard\\pages\\analyticspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{DBC7688B-63B0-4E31-BCEF-41237F4D94CB}|TrainingControlPanelDashboard.csproj|solutionrelative:pages\\analyticspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBC7688B-63B0-4E31-BCEF-41237F4D94CB}|TrainingControlPanelDashboard.csproj|e:\\dev\\trainingcontrolpaneldashboard\\pages\\programspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DBC7688B-63B0-4E31-BCEF-41237F4D94CB}|TrainingControlPanelDashboard.csproj|solutionrelative:pages\\programspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBC7688B-63B0-4E31-BCEF-41237F4D94CB}|TrainingControlPanelDashboard.csproj|e:\\dev\\trainingcontrolpaneldashboard\\pages\\trainingsessionspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{DBC7688B-63B0-4E31-BCEF-41237F4D94CB}|TrainingControlPanelDashboard.csproj|solutionrelative:pages\\trainingsessionspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBC7688B-63B0-4E31-BCEF-41237F4D94CB}|TrainingControlPanelDashboard.csproj|e:\\dev\\trainingcontrolpaneldashboard\\pages\\settingspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DBC7688B-63B0-4E31-BCEF-41237F4D94CB}|TrainingControlPanelDashboard.csproj|solutionrelative:pages\\settingspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DBC7688B-63B0-4E31-BCEF-41237F4D94CB}|TrainingControlPanelDashboard.csproj|e:\\dev\\trainingcontrolpanel\\app\\trainingcontrolpaneldashboard\\pages\\settingspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{DBC7688B-63B0-4E31-BCEF-41237F4D94CB}|TrainingControlPanelDashboard.csproj|e:\\dev\\trainingcontrolpaneldashboard\\pages\\settingspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{DBC7688B-63B0-4E31-BCEF-41237F4D94CB}|TrainingControlPanelDashboard.csproj|solutionrelative:pages\\settingspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DBC7688B-63B0-4E31-BCEF-41237F4D94CB}|TrainingControlPanelDashboard.csproj|e:\\dev\\trainingcontrolpanel\\app\\trainingcontrolpaneldashboard\\pages\\trainingsessionspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{DBC7688B-63B0-4E31-BCEF-41237F4D94CB}|TrainingControlPanelDashboard.csproj|solutionrelative:pages\\trainingsessionspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,37 +38,63 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AnalyticsPage.xaml",
+              "DocumentMoniker": "E:\\Dev\\TrainingControlPanelDashboard\\Pages\\AnalyticsPage.xaml",
+              "RelativeDocumentMoniker": "Pages\\AnalyticsPage.xaml",
+              "ToolTip": "E:\\Dev\\TrainingControlPanelDashboard\\Pages\\AnalyticsPage.xaml",
+              "RelativeToolTip": "Pages\\AnalyticsPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-30T20:44:27.31Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProgramsPage.xaml.cs",
+              "DocumentMoniker": "E:\\Dev\\TrainingControlPanelDashboard\\Pages\\ProgramsPage.xaml.cs",
+              "RelativeDocumentMoniker": "Pages\\ProgramsPage.xaml.cs",
+              "ToolTip": "E:\\Dev\\TrainingControlPanelDashboard\\Pages\\ProgramsPage.xaml.cs",
+              "RelativeToolTip": "Pages\\ProgramsPage.xaml.cs",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAuwHoAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-30T20:34:09.373Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
               "Title": "TrainingSessionsPage.xaml",
-              "DocumentMoniker": "E:\\Dev\\TrainingControlPanel\\app\\TrainingControlPanelDashboard\\Pages\\TrainingSessionsPage.xaml",
+              "DocumentMoniker": "E:\\Dev\\TrainingControlPanelDashboard\\Pages\\TrainingSessionsPage.xaml",
               "RelativeDocumentMoniker": "Pages\\TrainingSessionsPage.xaml",
-              "ToolTip": "E:\\Dev\\TrainingControlPanel\\app\\TrainingControlPanelDashboard\\Pages\\TrainingSessionsPage.xaml",
+              "ToolTip": "E:\\Dev\\TrainingControlPanelDashboard\\Pages\\TrainingSessionsPage.xaml",
               "RelativeToolTip": "Pages\\TrainingSessionsPage.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAAAFUAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-06-30T18:24:25.071Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "SettingsPage.xaml.cs",
-              "DocumentMoniker": "E:\\Dev\\TrainingControlPanel\\app\\TrainingControlPanelDashboard\\Pages\\SettingsPage.xaml.cs",
+              "DocumentMoniker": "E:\\Dev\\TrainingControlPanelDashboard\\Pages\\SettingsPage.xaml.cs",
               "RelativeDocumentMoniker": "Pages\\SettingsPage.xaml.cs",
-              "ToolTip": "E:\\Dev\\TrainingControlPanel\\app\\TrainingControlPanelDashboard\\Pages\\SettingsPage.xaml.cs",
+              "ToolTip": "E:\\Dev\\TrainingControlPanelDashboard\\Pages\\SettingsPage.xaml.cs",
               "RelativeToolTip": "Pages\\SettingsPage.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-30T18:18:57.249Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "SettingsPage.xaml",
-              "DocumentMoniker": "E:\\Dev\\TrainingControlPanel\\app\\TrainingControlPanelDashboard\\Pages\\SettingsPage.xaml",
+              "DocumentMoniker": "E:\\Dev\\TrainingControlPanelDashboard\\Pages\\SettingsPage.xaml",
               "RelativeDocumentMoniker": "Pages\\SettingsPage.xaml",
-              "ToolTip": "E:\\Dev\\TrainingControlPanel\\app\\TrainingControlPanelDashboard\\Pages\\SettingsPage.xaml",
+              "ToolTip": "E:\\Dev\\TrainingControlPanelDashboard\\Pages\\SettingsPage.xaml",
               "RelativeToolTip": "Pages\\SettingsPage.xaml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",

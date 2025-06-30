@@ -6,104 +6,61 @@ namespace TrainingControlPanelDashboard.Models
     {
         private string _name = string.Empty;
         private string _description = string.Empty;
-        private string _category = string.Empty;
-        private string _muscleGroup = string.Empty;
-        private string _equipment = string.Empty;
-        private int _sets;
-        private int _reps;
-        private double _weight;
-        private TimeSpan _restTime;
+        private string _rewardType = string.Empty;
+        private double _rewardValue;
+        private string _action = string.Empty;
+        private string _observation = string.Empty;
+        private string _status = "Pending";
+        private DateTime? _executed;
 
         public int Id { get; set; }
-        
+
         public string Name
         {
             get => _name;
-            set
-            {
-                _name = value;
-                OnPropertyChanged();
-            }
+            set { _name = value; OnPropertyChanged(); }
         }
 
         public string Description
         {
             get => _description;
-            set
-            {
-                _description = value;
-                OnPropertyChanged();
-            }
+            set { _description = value; OnPropertyChanged(); }
         }
 
-        public string Category
+        public string RewardType
         {
-            get => _category;
-            set
-            {
-                _category = value;
-                OnPropertyChanged();
-            }
+            get => _rewardType;
+            set { _rewardType = value; OnPropertyChanged(); }
         }
 
-        public string MuscleGroup
+        public double RewardValue
         {
-            get => _muscleGroup;
-            set
-            {
-                _muscleGroup = value;
-                OnPropertyChanged();
-            }
+            get => _rewardValue;
+            set { _rewardValue = value; OnPropertyChanged(); }
         }
 
-        public string Equipment
+        public string Action
         {
-            get => _equipment;
-            set
-            {
-                _equipment = value;
-                OnPropertyChanged();
-            }
+            get => _action;
+            set { _action = value; OnPropertyChanged(); }
         }
 
-        public int Sets
+        public string Observation
         {
-            get => _sets;
-            set
-            {
-                _sets = value;
-                OnPropertyChanged();
-            }
+            get => _observation;
+            set { _observation = value; OnPropertyChanged(); }
         }
 
-        public int Reps
+        public string Status
         {
-            get => _reps;
-            set
-            {
-                _reps = value;
-                OnPropertyChanged();
-            }
+            get => _status;
+            set { _status = value; OnPropertyChanged(); }
         }
 
-        public double Weight
+        public DateTime? Executed
         {
-            get => _weight;
-            set
-            {
-                _weight = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public TimeSpan RestTime
-        {
-            get => _restTime;
-            set
-            {
-                _restTime = value;
-                OnPropertyChanged();
-            }
+            get => _executed;
+            set { _executed = value; OnPropertyChanged(); }
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

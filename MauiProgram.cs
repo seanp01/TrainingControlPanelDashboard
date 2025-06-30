@@ -23,7 +23,7 @@ namespace TrainingControlPanelDashboard
             // Register pages
             builder.Services.AddTransient<MainPage>();
             builder.Services.AddTransient<TrainingSessionsPage>();
-            builder.Services.AddTransient<AthletesPage>();
+            builder.Services.AddTransient<ModelsPage>();
             builder.Services.AddTransient<ProgramsPage>();
             builder.Services.AddTransient<AnalyticsPage>();
             builder.Services.AddTransient<SettingsPage>();

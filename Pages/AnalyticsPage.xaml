@@ -16,11 +16,10 @@
                        HorizontalOptions="Center" />
             </Frame>
 
-            <!-- Key Metrics -->
-            <Label Text="Key Performance Indicators" 
+            <!-- Key Metrics for ML Models -->
+            <Label Text="Model Training KPIs" 
                    FontSize="18" 
                    FontAttributes="Bold" />
-            
             <Grid ColumnSpacing="15" RowSpacing="15">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -33,31 +32,31 @@
 
                 <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="LightBlue" Padding="15">
                     <StackLayout>
-                        <Label Text="Session Completion Rate"
+                        <Label Text="Model Completion Rate"
                                FontSize="12"
                                HorizontalOptions="Center" />
                         <Label x:Name="CompletionRateLabel"
-                               Text="85%"
+                               Text="92%"
                                FontSize="24"
                                FontAttributes="Bold"
                                HorizontalOptions="Center" />
                         <ProgressBar x:Name="CompletionRateProgress"
-                                     Progress="0.85"
+                                     Progress="0.92"
                                      ProgressColor="DarkBlue" />
                     </StackLayout>
                 </Frame>
 
                 <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="LightGreen" Padding="15">
                     <StackLayout>
-                        <Label Text="Average Session Duration"
+                        <Label Text="Average Training Duration"
                                FontSize="12"
                                HorizontalOptions="Center" />
                         <Label x:Name="AvgDurationLabel"
-                               Text="1h 45m"
+                               Text="2h 10m"
                                FontSize="24"
                                FontAttributes="Bold"
                                HorizontalOptions="Center" />
-                        <Label Text="Target: 1h 30m"
+                        <Label Text="Target: 2h 00m"
                                FontSize="10"
                                TextColor="Gray"
                                HorizontalOptions="Center" />
@@ -66,15 +65,15 @@
 
                 <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="LightCoral" Padding="15">
                     <StackLayout>
-                        <Label Text="Active Athletes"
+                        <Label Text="Active Models"
                                FontSize="12"
                                HorizontalOptions="Center" />
-                        <Label x:Name="ActiveAthletesLabel"
-                               Text="24"
+                        <Label x:Name="ActiveModelsLabel"
+                               Text="5"
                                FontSize="24"
                                FontAttributes="Bold"
                                HorizontalOptions="Center" />
-                        <Label Text="↑ 12% from last month"
+                        <Label Text="↑ 8% from last month"
                                FontSize="10"
                                TextColor="Green"
                                HorizontalOptions="Center" />
@@ -87,11 +86,11 @@
                                FontSize="12"
                                HorizontalOptions="Center" />
                         <Label x:Name="RunningProgramsLabel"
-                               Text="8"
+                               Text="3"
                                FontSize="24"
                                FontAttributes="Bold"
                                HorizontalOptions="Center" />
-                        <Label Text="3 ending this month"
+                        <Label Text="1 ending this month"
                                FontSize="10"
                                TextColor="Orange"
                                HorizontalOptions="Center" />
@@ -119,12 +118,12 @@
                 </Grid>
             </Frame>
 
-            <!-- Athlete Performance Summary -->
-            <Label Text="Top Performing Athletes" 
+            <!-- Model Performance Summary -->
+            <Label Text="Top Performing Models" 
                    FontSize="18" 
                    FontAttributes="Bold" />
 
-            <CollectionView x:Name="TopAthletesCollectionView" HeightRequest="300">
+            <CollectionView x:Name="TopModelsCollectionView" HeightRequest="300">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid Padding="15" BackgroundColor="White" Margin="0,2">
@@ -149,10 +148,10 @@
                                        VerticalOptions="Center" />
                             </Frame>
 
-                            <!-- Athlete Info -->
+                            <!-- Model Info -->
                             <StackLayout Grid.Column="1" Padding="10,0" VerticalOptions="Center">
                                 <Label Text="{Binding Name}" FontSize="14" FontAttributes="Bold" />
-                                <Label Text="{Binding Sport}" FontSize="12" TextColor="Gray" />
+                                <Label Text="{Binding Type}" FontSize="12" TextColor="Gray" />
                             </StackLayout>
 
                             <!-- Performance Score -->
@@ -162,7 +161,7 @@
                                        FontAttributes="Bold"
                                        TextColor="{StaticResource Primary}"
                                        HorizontalOptions="End" />
-                                <Label Text="completion rate"
+                                <Label Text="accuracy"
                                        FontSize="10"
                                        TextColor="Gray"
                                        HorizontalOptions="End" />

@@ -41,12 +41,12 @@
 
                 <Frame Grid.Column="0" BackgroundColor="LightBlue" Padding="15">
                     <StackLayout>
-                        <Label x:Name="TotalAthletesLabel" 
-                               Text="12" 
+                        <Label x:Name="TotalModelsLabel" 
+                               Text="5" 
                                FontSize="28" 
                                FontAttributes="Bold" 
                                HorizontalOptions="Center" />
-                        <Label Text="Athletes" 
+                        <Label Text="Models" 
                                FontSize="12" 
                                HorizontalOptions="Center" />
                     </StackLayout>
@@ -112,11 +112,11 @@
                             Clicked="OnNewSessionClicked" />
 
                     <Button Grid.Column="1"
-                            x:Name="ViewAthletesButton"
-                            Text="View Athletes"
+                            x:Name="ViewModelsButton"
+                            Text="View Models"
                             BackgroundColor="{StaticResource Secondary}"
                             TextColor="White"
-                            Clicked="OnViewAthletesClicked" />
+                            Clicked="OnViewModelsClicked" />
                 </Grid>
             </StackLayout>
 

@@ -5,92 +5,84 @@ namespace TrainingControlPanelDashboard.Models
     public class TrainingSession : INotifyPropertyChanged
     {
         private string _name = string.Empty;
-        private DateTime _scheduledDateTime;
-        private TimeSpan _duration;
-        private string _type = string.Empty;
         private string _description = string.Empty;
-        private string _status = "Scheduled";
-        private string _location = string.Empty;
+        private string _status = "Pending";
+        private DateTime _scheduled;
+        private DateTime? _started;
+        private DateTime? _ended;
+        private TimeSpan? _duration;
+        private string _modelType = string.Empty;
+        private string _dataset = string.Empty;
+        private double _accuracy;
+        private double _loss;
 
         public int Id { get; set; }
-        
+
         public string Name
         {
             get => _name;
-            set
-            {
-                _name = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public DateTime ScheduledDateTime
-        {
-            get => _scheduledDateTime;
-            set
-            {
-                _scheduledDateTime = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public TimeSpan Duration
-        {
-            get => _duration;
-            set
-            {
-                _duration = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public string Type
-        {
-            get => _type;
-            set
-            {
-                _type = value;
-                OnPropertyChanged();
-            }
+            set { _name = value; OnPropertyChanged(); }
         }
 
         public string Description
         {
             get => _description;
-            set
-            {
-                _description = value;
-                OnPropertyChanged();
-            }
+            set { _description = value; OnPropertyChanged(); }
         }
 
         public string Status
         {
             get => _status;
-            set
-            {
-                _status = value;
-                OnPropertyChanged();
-            }
+            set { _status = value; OnPropertyChanged(); }
         }
 
-        public string Location
+        public DateTime Scheduled
         {
-            get => _location;
-            set
-            {
-                _location = value;
-                OnPropertyChanged();
-            }
+            get => _scheduled;
+            set { _scheduled = value; OnPropertyChanged(); }
         }
 
-        public int? AthleteId { get; set; }
-        public Athlete? Athlete { get; set; }
-        
-        public int? ProgramId { get; set; }
-        public TrainingProgram? Program { get; set; }
+        public DateTime? Started
+        {
+            get => _started;
+            set { _started = value; OnPropertyChanged(); }
+        }
 
-        public List<Exercise> Exercises { get; set; } = new();
+        public DateTime? Ended
+        {
+            get => _ended;
+            set { _ended = value; OnPropertyChanged(); }
+        }
+
+        public TimeSpan? Duration
+        {
+            get => _duration;
+            set { _duration = value; OnPropertyChanged(); }
+        }
+
+        public string ModelType
+        {
+            get => _modelType;
+            set { _modelType = value; OnPropertyChanged(); }
+        }
+
+        public string Dataset
+        {
+            get => _dataset;
+            set { _dataset = value; OnPropertyChanged(); }
+        }
+
+        public double Accuracy
+        {
+            get => _accuracy;
+            set { _accuracy = value; OnPropertyChanged(); }
+        }
+
+        public double Loss
+        {
+            get => _loss;
+            set { _loss = value; OnPropertyChanged(); }
+        }
 
         public event PropertyChangedEventHandler? PropertyChanged;
 

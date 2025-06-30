@@ -34,11 +34,11 @@
             Route="sessions" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Athletes" Icon="person">
+    <FlyoutItem Title="Models" Icon="person">
         <ShellContent
-            Title="Athletes"
-            ContentTemplate="{DataTemplate pages:AthletesPage}"
-            Route="athletes" />
+            Title="Models"
+            ContentTemplate="{DataTemplate pages:ModelsPage}"
+            Route="models" />
     </FlyoutItem>
 
     <FlyoutItem Title="Programs" Icon="book">

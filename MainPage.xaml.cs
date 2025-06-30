@@ -25,27 +25,27 @@ namespace TrainingControlPanelDashboard
             try
             {
                 // Load statistics
-                var athletes = await _dataService.GetAthletesAsync();
+                var models = await _dataService.GetModelsAsync();
                 var sessions = await _dataService.GetTrainingSessionsAsync();
                 var programs = await _dataService.GetTrainingProgramsAsync();
 
                 // Update statistics
-                TotalAthletesLabel.Text = athletes.Count.ToString();
-                
-                var todaySessions = sessions.Where(s => s.ScheduledDateTime.Date == DateTime.Today).Count();
+                TotalModelsLabel.Text = models.Count.ToString();
+
+                var todaySessions = sessions.Where(s => s.Scheduled.Date == DateTime.Today).Count();
                 TotalSessionsLabel.Text = todaySessions.ToString();
-                
-                var activePrograms = programs.Where(p => p.EndDate >= DateTime.Today).Count();
+
+                var activePrograms = programs.Where(p => p.Status == "Running").Count();
                 ActiveProgramsLabel.Text = activePrograms.ToString();
-                
+
                 var completedSessions = sessions.Where(s => s.Status == "Completed").Count();
                 var completionRate = sessions.Count > 0 ? (double)completedSessions / sessions.Count * 100 : 0;
                 CompletionRateLabel.Text = $"{completionRate:F0}%";
 
                 // Load upcoming sessions
                 var upcoming = sessions
-                    .Where(s => s.ScheduledDateTime >= DateTime.Now && s.Status == "Scheduled")
-                    .OrderBy(s => s.ScheduledDateTime)
+                    .Where(s => s.Scheduled >= DateTime.Now && s.Status == "Scheduled")
+                    .OrderBy(s => s.Scheduled)
                     .Take(5);
 
                 _upcomingSessions.Clear();
@@ -57,8 +57,8 @@ namespace TrainingControlPanelDashboard
 
                 // Load recent activity (recent sessions)
                 var recent = sessions
-                    .Where(s => s.ScheduledDateTime >= DateTime.Today.AddDays(-7))
-                    .OrderByDescending(s => s.ScheduledDateTime)
+                    .Where(s => s.Scheduled >= DateTime.Today.AddDays(-7))
+                    .OrderByDescending(s => s.Scheduled)
                     .Take(5);
 
                 _recentActivity.Clear();
@@ -79,9 +79,9 @@ namespace TrainingControlPanelDashboard
             await Shell.Current.GoToAsync("//sessions");
         }
 
-        private async void OnViewAthletesClicked(object sender, EventArgs e)
+        private async void OnViewModelsClicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync("//athletes");
+            await Shell.Current.GoToAsync("//models");
         }
     }
 }

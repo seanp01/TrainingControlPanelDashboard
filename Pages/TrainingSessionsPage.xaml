@@ -20,7 +20,7 @@
                 </Grid.ColumnDefinitions>
                 
                 <Label Grid.Column="0"
-                       Text="Training Sessions"
+                       Text="Model Training Sessions"
                        FontSize="20"
                        FontAttributes="Bold"
                        TextColor="White"
@@ -44,7 +44,7 @@
             
             <SearchBar Grid.Column="0"
                        x:Name="SearchBar"
-                       Placeholder="Search sessions..."
+                       Placeholder="Search model sessions..."
                        TextChanged="OnSearchTextChanged" />
             
             <Picker Grid.Column="1"
@@ -98,8 +98,8 @@
                                        FontAttributes="Bold" />
 
                                 <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Horizontal" Spacing="15">
-                                    <Label Text="{Binding Type}" FontSize="12" TextColor="Gray" />
-                                    <Label Text="{Binding Location}" FontSize="12" TextColor="Gray" />
+                                    <Label Text="{Binding ModelType}" FontSize="12" TextColor="Gray" />
+                                    <Label Text="{Binding Dataset}" FontSize="12" TextColor="Gray" />
                                     <Label Text="{Binding Duration, StringFormat='{0:h\\:mm}'}" FontSize="12" TextColor="Gray" />
                                 </StackLayout>
 

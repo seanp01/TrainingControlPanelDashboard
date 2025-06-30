@@ -7,14 +7,13 @@ namespace TrainingControlPanelDashboard.Pages
     public partial class AnalyticsPage : ContentPage
     {
         private readonly IDataService _dataService;
-        private ObservableCollection<AthletePerformance> _topAthletes;
+        private ObservableCollection<ModelPerformance> _topModels;
 
         public AnalyticsPage()
         {
             InitializeComponent();
             _dataService = new DataService();
-            _topAthletes = new ObservableCollection<AthletePerformance>();
-            
+            _topModels = new ObservableCollection<ModelPerformance>();
             LoadAnalytics();
         }
 
@@ -23,13 +22,13 @@ namespace TrainingControlPanelDashboard.Pages
             try
             {
                 // Load data
-                var athletes = await _dataService.GetAthletesAsync();
+                var models = await _dataService.GetModelsAsync();
                 var sessions = await _dataService.GetTrainingSessionsAsync();
                 var programs = await _dataService.GetTrainingProgramsAsync();
 
                 // Calculate analytics
-                CalculateMetrics(athletes, sessions, programs);
-                LoadTopPerformers(athletes, sessions);
+                CalculateMetrics(models, sessions, programs);
+                LoadTopPerformers(models, sessions);
             }
             catch (Exception ex)
             {
@@ -37,78 +36,76 @@ namespace TrainingControlPanelDashboard.Pages
             }
         }
 
-        private void CalculateMetrics(IEnumerable<Athlete> athletes, IEnumerable<TrainingSession> sessions, IEnumerable<TrainingProgram> programs)
+        private void CalculateMetrics(IEnumerable<Model> models, IEnumerable<TrainingSession> sessions, IEnumerable<TrainingProgram> programs)
         {
-            // Session completion rate
-            var completedSessions = sessions.Count(s => s.Status == "Completed");
-            var totalSessions = sessions.Count();
-            var completionRate = totalSessions > 0 ? (double)completedSessions / totalSessions : 0;
-            
+            // Model completion rate (mock: percent of models with at least one completed session)
+            var completedModelIds = sessions.Where(s => s.Status == "Completed").Select(s => s.ModelType).Distinct().Count();
+            var totalModels = models.Count();
+            var completionRate = totalModels > 0 ? (double)completedModelIds / totalModels : 0;
+
             CompletionRateLabel.Text = $"{completionRate * 100:F0}%";
             CompletionRateProgress.Progress = completionRate;
 
-            // Average session duration
-            var avgDuration = sessions.Any() ? sessions.Average(s => s.Duration.TotalMinutes) : 0;
+            // Average training duration
+            var avgDuration = sessions.Any() && sessions.All(s => s.Duration.HasValue) ? sessions.Average(s => s.Duration.Value.TotalMinutes) : 0;
             var hours = (int)(avgDuration / 60);
             var minutes = (int)(avgDuration % 60);
             AvgDurationLabel.Text = $"{hours}h {minutes}m";
 
-            // Active athletes
-            var activeAthletes = athletes.Count(a => a.Status == "Active");
-            ActiveAthletesLabel.Text = activeAthletes.ToString();
+            // Active models
+            var activeModels = models.Count(m => m.Status == "Active" || m.Status == "Training");
+            ActiveModelsLabel.Text = activeModels.ToString();
 
             // Running programs
-            var runningPrograms = programs.Count(p => p.StartDate <= DateTime.Today && p.EndDate >= DateTime.Today);
+            var runningPrograms = programs.Count(p => p.Status == "Running");
             RunningProgramsLabel.Text = runningPrograms.ToString();
         }
 
-        private void LoadTopPerformers(IEnumerable<Athlete> athletes, IEnumerable<TrainingSession> sessions)
+        private void LoadTopPerformers(IEnumerable<Model> models, IEnumerable<TrainingSession> sessions)
         {
-            var athletePerformances = new List<AthletePerformance>();
+            var modelPerformances = new List<ModelPerformance>();
             var random = new Random();
 
             int rank = 1;
-            foreach (var athlete in athletes.Take(5))
+            foreach (var model in models.Take(5))
             {
                 // Calculate mock performance score (in a real app, this would be based on actual metrics)
-                var athleteSessions = sessions.Where(s => s.AthleteId == athlete.Id);
-                var completedCount = athleteSessions.Count(s => s.Status == "Completed");
-                var totalCount = athleteSessions.Count();
-                var performanceScore = totalCount > 0 ? (double)completedCount / totalCount * 100 : random.NextDouble() * 30 + 70;
+                var modelSessions = sessions.Where(s => s.ModelType == model.Type);
+                var avgAccuracy = modelSessions.Any() ? modelSessions.Average(s => s.Accuracy) : random.NextDouble() * 0.2 + 0.8;
 
-                athletePerformances.Add(new AthletePerformance
+                modelPerformances.Add(new ModelPerformance
                 {
                     Rank = rank++,
-                    Name = athlete.Name,
-                    Sport = athlete.Sport,
-                    PerformanceScore = performanceScore
+                    Name = model.Name,
+                    Type = model.Type,
+                    PerformanceScore = avgAccuracy * 100
                 });
             }
 
             // Sort by performance score
-            athletePerformances = athletePerformances.OrderByDescending(ap => ap.PerformanceScore).ToList();
-            
+            modelPerformances = modelPerformances.OrderByDescending(mp => mp.PerformanceScore).ToList();
+
             // Update ranks
-            for (int i = 0; i < athletePerformances.Count; i++)
+            for (int i = 0; i < modelPerformances.Count; i++)
             {
-                athletePerformances[i].Rank = i + 1;
+                modelPerformances[i].Rank = i + 1;
             }
 
-            _topAthletes.Clear();
-            foreach (var performance in athletePerformances)
+            _topModels.Clear();
+            foreach (var performance in modelPerformances)
             {
-                _topAthletes.Add(performance);
+                _topModels.Add(performance);
             }
 
-            TopAthletesCollectionView.ItemsSource = _topAthletes;
+            TopModelsCollectionView.ItemsSource = _topModels;
         }
     }
 
-    public class AthletePerformance
+    public class ModelPerformance
     {
         public int Rank { get; set; }
         public string Name { get; set; } = string.Empty;
-        public string Sport { get; set; } = string.Empty;
+        public string Type { get; set; } = string.Empty;
         public double PerformanceScore { get; set; }
     }
 }

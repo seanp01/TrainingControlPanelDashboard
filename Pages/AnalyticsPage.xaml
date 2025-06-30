@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TrainingControlPanelDashboard.Pages.AnalyticsPage"
+             Title="Analytics">
+
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="20">
+            
+            <!-- Header -->
+            <Frame BackgroundColor="{StaticResource Primary}" Padding="20">
+                <Label Text="Training Analytics"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       HorizontalOptions="Center" />
+            </Frame>
+
+            <!-- Key Metrics -->
+            <Label Text="Key Performance Indicators" 
+                   FontSize="18" 
+                   FontAttributes="Bold" />
+            
+            <Grid ColumnSpacing="15" RowSpacing="15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="LightBlue" Padding="15">
+                    <StackLayout>
+                        <Label Text="Session Completion Rate"
+                               FontSize="12"
+                               HorizontalOptions="Center" />
+                        <Label x:Name="CompletionRateLabel"
+                               Text="85%"
+                               FontSize="24"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center" />
+                        <ProgressBar x:Name="CompletionRateProgress"
+                                     Progress="0.85"
+                                     ProgressColor="DarkBlue" />
+                    </StackLayout>
+                </Frame>
+
+                <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="LightGreen" Padding="15">
+                    <StackLayout>
+                        <Label Text="Average Session Duration"
+                               FontSize="12"
+                               HorizontalOptions="Center" />
+                        <Label x:Name="AvgDurationLabel"
+                               Text="1h 45m"
+                               FontSize="24"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center" />
+                        <Label Text="Target: 1h 30m"
+                               FontSize="10"
+                               TextColor="Gray"
+                               HorizontalOptions="Center" />
+                    </StackLayout>
+                </Frame>
+
+                <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="LightCoral" Padding="15">
+                    <StackLayout>
+                        <Label Text="Active Athletes"
+                               FontSize="12"
+                               HorizontalOptions="Center" />
+                        <Label x:Name="ActiveAthletesLabel"
+                               Text="24"
+                               FontSize="24"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center" />
+                        <Label Text="↑ 12% from last month"
+                               FontSize="10"
+                               TextColor="Green"
+                               HorizontalOptions="Center" />
+                    </StackLayout>
+                </Frame>
+
+                <Frame Grid.Row="1" Grid.Column="1" BackgroundColor="LightYellow" Padding="15">
+                    <StackLayout>
+                        <Label Text="Programs Running"
+                               FontSize="12"
+                               HorizontalOptions="Center" />
+                        <Label x:Name="RunningProgramsLabel"
+                               Text="8"
+                               FontSize="24"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center" />
+                        <Label Text="3 ending this month"
+                               FontSize="10"
+                               TextColor="Orange"
+                               HorizontalOptions="Center" />
+                    </StackLayout>
+                </Frame>
+            </Grid>
+
+            <!-- Weekly Performance Chart Placeholder -->
+            <Label Text="Weekly Performance Trends" 
+                   FontSize="18" 
+                   FontAttributes="Bold" />
+            
+            <Frame BackgroundColor="White" Padding="20" HeightRequest="200">
+                <Grid>
+                    <Label Text="📊 Chart Placeholder"
+                           FontSize="48"
+                           TextColor="LightGray"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
+                    <Label Text="Weekly session completion rates would be displayed here"
+                           FontSize="12"
+                           TextColor="Gray"
+                           HorizontalOptions="Center"
+                           VerticalOptions="End" />
+                </Grid>
+            </Frame>
+
+            <!-- Athlete Performance Summary -->
+            <Label Text="Top Performing Athletes" 
+                   FontSize="18" 
+                   FontAttributes="Bold" />
+
+            <CollectionView x:Name="TopAthletesCollectionView" HeightRequest="300">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="15" BackgroundColor="White" Margin="0,2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Rank -->
+                            <Frame Grid.Column="0" 
+                                   BackgroundColor="{StaticResource Primary}"
+                                   HeightRequest="30"
+                                   WidthRequest="30"
+                                   CornerRadius="15"
+                                   Padding="0">
+                                <Label Text="{Binding Rank}"
+                                       FontSize="12"
+                                       FontAttributes="Bold"
+                                       TextColor="White"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center" />
+                            </Frame>
+
+                            <!-- Athlete Info -->
+                            <StackLayout Grid.Column="1" Padding="10,0" VerticalOptions="Center">
+                                <Label Text="{Binding Name}" FontSize="14" FontAttributes="Bold" />
+                                <Label Text="{Binding Sport}" FontSize="12" TextColor="Gray" />
+                            </StackLayout>
+
+                            <!-- Performance Score -->
+                            <StackLayout Grid.Column="2" VerticalOptions="Center" HorizontalOptions="End">
+                                <Label Text="{Binding PerformanceScore, StringFormat='{0:F1}%'}"
+                                       FontSize="16"
+                                       FontAttributes="Bold"
+                                       TextColor="{StaticResource Primary}"
+                                       HorizontalOptions="End" />
+                                <Label Text="completion rate"
+                                       FontSize="10"
+                                       TextColor="Gray"
+                                       HorizontalOptions="End" />
+                            </StackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Training Load Distribution -->
+            <Label Text="Training Load Distribution" 
+                   FontSize="18" 
+                   FontAttributes="Bold" />
+
+            <Grid ColumnSpacing="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Frame Grid.Column="0" BackgroundColor="Red" Padding="10">
+                    <StackLayout>
+                        <Label Text="High Intensity" FontSize="10" TextColor="White" HorizontalOptions="Center" />
+                        <Label Text="25%" FontSize="16" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
+                    </StackLayout>
+                </Frame>
+
+                <Frame Grid.Column="1" BackgroundColor="Orange" Padding="10">
+                    <StackLayout>
+                        <Label Text="Medium" FontSize="10" TextColor="White" HorizontalOptions="Center" />
+                        <Label Text="45%" FontSize="16" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
+                    </StackLayout>
+                </Frame>
+
+                <Frame Grid.Column="2" BackgroundColor="Yellow" Padding="10">
+                    <StackLayout>
+                        <Label Text="Low" FontSize="10" TextColor="Black" HorizontalOptions="Center" />
+                        <Label Text="25%" FontSize="16" FontAttributes="Bold" TextColor="Black" HorizontalOptions="Center" />
+                    </StackLayout>
+                </Frame>
+
+                <Frame Grid.Column="3" BackgroundColor="Green" Padding="10">
+                    <StackLayout>
+                        <Label Text="Recovery" FontSize="10" TextColor="White" HorizontalOptions="Center" />
+                        <Label Text="5%" FontSize="16" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
+                    </StackLayout>
+                </Frame>
+            </Grid>
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

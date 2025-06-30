@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TrainingControlPanelDashboard.Pages.AthletesPage"
+             Title="Athletes">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Frame Grid.Row="0" BackgroundColor="{StaticResource Primary}" Padding="20" Margin="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                
+                <Label Grid.Column="0"
+                       Text="Athletes"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       VerticalOptions="Center" />
+                
+                <Button Grid.Column="1"
+                        x:Name="AddAthleteButton"
+                        Text="+ Add Athlete"
+                        BackgroundColor="White"
+                        TextColor="{StaticResource Primary}"
+                        Clicked="OnAddAthleteClicked" />
+            </Grid>
+        </Frame>
+
+        <!-- Search Bar -->
+        <Grid Grid.Row="1" Padding="20" BackgroundColor="LightGray">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            
+            <SearchBar Grid.Column="0"
+                       x:Name="SearchBar"
+                       Placeholder="Search athletes..."
+                       TextChanged="OnSearchTextChanged" />
+            
+            <Picker Grid.Column="1"
+                    x:Name="SportFilterPicker"
+                    Title="Filter by Sport"
+                    WidthRequest="150"
+                    SelectedIndexChanged="OnSportFilterChanged">
+                <Picker.Items>
+                    <x:String>All Sports</x:String>
+                    <x:String>Football</x:String>
+                    <x:String>Basketball</x:String>
+                    <x:String>Soccer</x:String>
+                    <x:String>Tennis</x:String>
+                    <x:String>Swimming</x:String>
+                    <x:String>Track</x:String>
+                </Picker.Items>
+            </Picker>
+        </Grid>
+
+        <!-- Athletes List -->
+        <CollectionView Grid.Row="2" x:Name="AthletesCollectionView" Margin="20">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Edit"
+                                           BackgroundColor="Orange"
+                                           Command="{Binding EditCommand}" />
+                                <SwipeItem Text="Delete"
+                                           BackgroundColor="Red"
+                                           Command="{Binding DeleteCommand}" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        
+                        <Frame Padding="15" Margin="0,5" BackgroundColor="White">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="60" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Avatar -->
+                                <Frame Grid.Column="0" 
+                                       BackgroundColor="{StaticResource Primary}"
+                                       HeightRequest="50"
+                                       WidthRequest="50"
+                                       CornerRadius="25"
+                                       Padding="0"
+                                       VerticalOptions="Center">
+                                    <Label Text="{Binding Initials}"
+                                           FontSize="18"
+                                           FontAttributes="Bold"
+                                           TextColor="White"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center" />
+                                </Frame>
+
+                                <!-- Athlete Info -->
+                                <StackLayout Grid.Column="1" Padding="15,0" VerticalOptions="Center">
+                                    <Label Text="{Binding Name}"
+                                           FontSize="16"
+                                           FontAttributes="Bold" />
+                                    <StackLayout Orientation="Horizontal" Spacing="10">
+                                        <Label Text="{Binding Sport}" FontSize="12" TextColor="Gray" />
+                                        <Label Text="{Binding Position}" FontSize="12" TextColor="Gray" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" Spacing="10">
+                                        <Label Text="{Binding Age, StringFormat='Age: {0}'}" FontSize="12" TextColor="DarkGray" />
+                                        <Label Text="{Binding Status}" FontSize="12" TextColor="{StaticResource Primary}" />
+                                    </StackLayout>
+                                </StackLayout>
+
+                                <!-- Stats -->
+                                <StackLayout Grid.Column="2" VerticalOptions="Center" HorizontalOptions="End">
+                                    <Label Text="{Binding Height, StringFormat='{0:F0} cm'}"
+                                           FontSize="12"
+                                           TextColor="Gray"
+                                           HorizontalOptions="End" />
+                                    <Label Text="{Binding Weight, StringFormat='{0:F0} kg'}"
+                                           FontSize="12"
+                                           TextColor="Gray"
+                                           HorizontalOptions="End" />
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Loading Indicator -->
+        <ActivityIndicator Grid.Row="2" 
+                          x:Name="LoadingIndicator"
+                          IsVisible="False"
+                          IsRunning="False"
+                          Color="{StaticResource Primary}"
+                          VerticalOptions="Center"
+                          HorizontalOptions="Center" />
+
+    </Grid>
+
+</ContentPage>

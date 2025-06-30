@@ -1,0 +1,3 @@
+
+
+v1.0.0 - Initial project scaffolding and skeleton code for the front end dashboard of the training control panel.

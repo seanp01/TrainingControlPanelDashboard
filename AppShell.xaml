@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="TrainingControlPanelDashboard.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:TrainingControlPanelDashboard"
+    xmlns:pages="clr-namespace:TrainingControlPanelDashboard.Pages"
+    Shell.FlyoutBehavior="Flyout"
+    Title="Training Control Panel">
+
+    <Shell.FlyoutHeader>
+        <Grid BackgroundColor="{StaticResource Primary}" 
+              HeightRequest="200">
+            <Label Text="Training Control Panel"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center" />
+        </Grid>
+    </Shell.FlyoutHeader>
+
+    <FlyoutItem Title="Dashboard" Icon="home">
+        <ShellContent
+            Title="Dashboard"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="dashboard" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Training Sessions" Icon="calendar">
+        <ShellContent
+            Title="Training Sessions"
+            ContentTemplate="{DataTemplate pages:TrainingSessionsPage}"
+            Route="sessions" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Athletes" Icon="person">
+        <ShellContent
+            Title="Athletes"
+            ContentTemplate="{DataTemplate pages:AthletesPage}"
+            Route="athletes" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Programs" Icon="book">
+        <ShellContent
+            Title="Training Programs"
+            ContentTemplate="{DataTemplate pages:ProgramsPage}"
+            Route="programs" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Analytics" Icon="bar_chart">
+        <ShellContent
+            Title="Analytics"
+            ContentTemplate="{DataTemplate pages:AnalyticsPage}"
+            Route="analytics" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Settings" Icon="settings">
+        <ShellContent
+            Title="Settings"
+            ContentTemplate="{DataTemplate pages:SettingsPage}"
+            Route="settings" />
+    </FlyoutItem>
+
+</Shell>
